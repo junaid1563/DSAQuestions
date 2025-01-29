@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Set;
 
 // set is much faster than map
+// Contains Duplicate: https://leetcode.com/problems/contains-duplicate/
 
 public class ConatinsDuplicate {
     public static void main(String[] args) {

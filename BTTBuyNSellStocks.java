@@ -7,6 +7,8 @@ public class BTTBuyNSellStocks {
      *  max depends on profit -> if current profit> profit -> only then we change max
      *  we count profit only when manidx>minidx
      * 
+     *  Best Time to Buy and Sell Stock: https://leetcode.com/problems/best-time-to-buy-
+and-sell-stock/ 
     */
 
 
