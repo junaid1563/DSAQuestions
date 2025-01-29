@@ -3,6 +3,12 @@ public class BTTBuyNSellStocks {
         int arr[] = { 7, 6, 4, 3, 1 };
         System.out.println(maxProfit(arr));
     }
+    /*  min is minimum in array, profit depends on min.so we can have normal min condition there
+     *  max depends on profit -> if current profit> profit -> only then we change max
+     *  we count profit only when manidx>minidx
+     * 
+    */
+
 
     public static int maxProfit(int[] prices) {
         int min = Integer.MAX_VALUE, max = 0, minidx = -1, maxidx = -1;
