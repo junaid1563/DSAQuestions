@@ -5,6 +5,10 @@ public class MaximumWater {
     }
 
     // https://leetcode.com/problems/container-with-most-water/
+    // Approach
+    // maximize area
+    // move the smaller element pointer each time
+    
     public static int maxArea(int[] height) {
         int i = 0, j = height.length - 1;
         int area = 0;
