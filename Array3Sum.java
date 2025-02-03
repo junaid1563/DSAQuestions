@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 /*
- * not optimized
+ * threeSum- not optimized
+ * threeSum2- passed
+ *  3Sum: https://leetcode.com/problems/3sum/ 
 */
 public class Array3Sum {
     public static void main(String[] args) {
