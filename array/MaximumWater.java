@@ -15,12 +15,13 @@ public class MaximumWater {
         int area = 0;
         while (i < j) {
             int h = Math.min(height[i], height[j]);
-            int v = j - i;
-            int currentArea = h * v;
+            int w = j - i;
+            int currentArea = h * w;
             System.out.println("currentArea= " + currentArea);
             if (currentArea > area) {
                 area = currentArea;
             }
+            // move smaller height pointer
             if (height[i] > height[j]) {
                 j--;
             } else {
