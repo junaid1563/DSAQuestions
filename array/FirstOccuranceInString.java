@@ -1,3 +1,4 @@
+package array;
 public class FirstOccuranceInString {
     public static void main(String[] args) {
         String str = "ABCDcarandAcar";

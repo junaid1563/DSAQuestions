@@ -1,3 +1,4 @@
+package array;
 public class RemoveDuplicatesArray {
     /*
      * we compare i and i+1 elements, if they are not same then we swap ith and idx

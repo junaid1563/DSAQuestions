@@ -1,3 +1,4 @@
+package array;
 public class RotateArrayByK {
     // Rotate Array: https://leetcode.com/problems/rotate-array/ 
     public static void main(String[] args) {
