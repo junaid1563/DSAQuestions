@@ -36,4 +36,17 @@ public class RemoveDuplicatesArray {
 
         return length;
     }
+
+    public static int removeDuplicates2(int[] nums) {
+        int idx = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i != 0 && nums[i - 1] == nums[i]) {
+                continue;
+            }
+            nums[idx] = nums[i];
+            idx++;
+        }
+        return idx;
+    }
 }
