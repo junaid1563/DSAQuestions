@@ -1,4 +1,6 @@
 package array;
+// https://leetcode.com/problems/find-the-duplicate-number/
+// Mpt solved yet
 
 public class OneDuplicateInArray {
     public static void main(String[] args) {

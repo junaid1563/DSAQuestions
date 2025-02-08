@@ -1,5 +1,6 @@
 package array;
 public class SortColors {
+    // https://leetcode.com/problems/sort-colors/
     public static void main(String[] args) {
         int[] arr = { 1, 1, 1, 2, 1, 0, 0, 1, 1, 0 };
         sortColors(arr);
