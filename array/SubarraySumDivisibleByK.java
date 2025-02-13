@@ -1,5 +1,9 @@
 package array;
 
+
+/**sum approach
+ * https://leetcode.com/problems/subarray-sum-equals-k/submissions/1540896133/
+ */
 public class SubarraySumDivisibleByK {
     public static void main(String[] args) {
         int[] arr = { 4, 5, 0, -2, -3, 1 };
