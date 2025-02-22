@@ -1,3 +1,5 @@
+package array;
+
 import java.util.ArrayList;
 
 // https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/

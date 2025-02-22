@@ -1,3 +1,5 @@
+package array;
+
 public class MaxValEquation {
     public static void main(String[] args) {
         int[][] arr = {{1,3},{2,0},{5,10},{6,-10}};
