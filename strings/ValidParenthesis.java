@@ -1,4 +1,4 @@
-package array;
+package strings;
 
 import java.util.Stack;
 // https://leetcode.com/problems/valid-parentheses/
