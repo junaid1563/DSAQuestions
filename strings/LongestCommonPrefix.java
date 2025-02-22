@@ -1,4 +1,4 @@
-package array;
+package strings;
 public class LongestCommonPrefix {
 
     // Longest Common Prefix: https://leetcode.com/problems/longest-common-prefix/
