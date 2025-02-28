@@ -5,6 +5,8 @@ package strings;
  * 1. Find transpose 
  * 2. Find reverse of transpose 
  * https://leetcode.com/problems/rotate-image/description/
+ * for -90 degree rotation
+ * find reverse first and then transpose
 */
 public class RotateImage {
     public static void main(String[] args) {
