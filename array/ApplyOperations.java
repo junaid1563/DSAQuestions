@@ -24,7 +24,11 @@ public class ApplyOperations {
                 idx++;
             }
         }
-        nums[idx]=0;
+        while (idx < nums.length) {
+            nums[idx] = 0;
+            idx++;
+        }
+
         return nums;
     }
 }
