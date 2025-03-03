@@ -9,12 +9,12 @@ public class MaxPoints {
     public int maxPoints(int[][] points) {
         int count =1;
         int n = points.length;
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Float, Integer> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 int x1 = points[i][0], y1 = points[i][1];
                 int x2 = points[j][0], y2 = points[j][1];
-                int slope = 0;
+                float slope = 0;
                 if (x1 == x2 || y2==y1) {
                     continue;
                 }else{
@@ -25,12 +25,12 @@ public class MaxPoints {
                 if ( map.containsKey(slope)) {
                     map.replace(slope, map.get(slope) + 1);
                 } else {
-                    map.put(slope, 1);
+                    map.put(slope, 2);
                 }
             }
         }
         System.out.println(map.toString());
-        for (Entry<Integer, Integer> entry : map.entrySet()) {
+        for (Entry<Float, Integer> entry : map.entrySet()) {
             if (entry.getKey()!=-1  && entry.getValue() > count) {
                 count = entry.getValue();
             }
