@@ -1,5 +1,8 @@
 package linkedlist;
 
+// https://leetcode.com/problems/middle-of-the-linked-list/
+// Two pointer approach
+// one moves by one step, two moves by two steps
 class ListNode {
     int val;
     ListNode next;
