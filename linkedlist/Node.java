@@ -74,41 +74,41 @@ public class Node {
         System.out.println();
     }
 
+    /**
+     * Creates a deep copy of a linked list where each node has two pointers: `next`
+     * and `random`.
+     * 
+     * Approach:
+     * 1. Traverse the original linked list and create a mapping from each original
+     * node to its corresponding new node.
+     * - Use a HashMap to store the mapping from the original node to the new node.
+     * 2. Traverse the original linked list again to set the `next` and `random`
+     * pointers for each new node.
+     * - For each original node, set the `next` pointer of the corresponding new
+     * node to the new node corresponding to the original node's `next` pointer.
+     * - Similarly, set the `random` pointer of the corresponding new node to the
+     * new node corresponding to the original node's `random` pointer.
+     * 3. Return the new head node which is the deep copy of the original linked
+     * list.
+     * 
+     * @param head The head of the original linked list.
+     * @return The head of the deep copied linked list.
+     */
     public Node copyRandomList(Node head) {
-        Node head2 = new Node(0), curr = head, curr2 = head2;
-        Map<Integer, Node> nodes = new HashMap<>();
-        // first create normal list without random nodes
+
+        Node curr = head;
+        Map<Node, Node> map = new HashMap<>();
         while (curr != null) {
-            Node node = new Node(curr.val);
-            curr2.next = node;
-            // put nodes and index in map
-            nodes.put(node.val, node);
-            if (curr.next == null || curr2.next == null) {
-                break;
-            }
+            map.put(curr, new Node(curr.val));
             curr = curr.next;
-            curr2 = curr2.next;
         }
         curr = head;
-        curr2 = head2.next;
-
-        // now run loop to set random nodes
-        while (curr != null && curr2 != null) {
-            // get random node at given index from map
-            if (curr.random != null) {
-
-                curr2.random = nodes.get(curr.random.val);
-            } else {
-                curr2.random = null;
-            }
-
-            if (curr.next == null || curr2.next==null) {
-                break;
-            }
+        while (curr != null) {
+            map.get(curr).next = map.get(curr.next);
+            map.get(curr).random = map.get(curr.random);
             curr = curr.next;
-            curr2=curr2.next;
-            
         }
-        return head2.next;
+
+        return map.get(head);
     }
 }
