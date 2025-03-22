@@ -19,6 +19,10 @@ public class SortLists {
         // head to temp -> left list, slow to fast -> right list
         ListNode left_side = sortList(head);
         ListNode right_side = sortList(slow);
+        System.out.println("left side");
+        printList(left_side);
+        System.out.println("right side");
+        printList(right_side);
         return merge(left_side, right_side);
     }
 
@@ -26,32 +30,66 @@ public class SortLists {
         ListNode c1 = h1, c2 = h2;
         ListNode newHead = new ListNode(0), curr = newHead;
 
-        while (c1 != null && c1.next != null && c2 != null && c2.next != null) {
-            ListNode node = new ListNode();
+        while (c1 != null && c2 != null) {
+
             if (c1.val < c2.val) {
-                node.val = c1.val;
+                System.out.println("c1 is less");
+                ListNode node = new ListNode(c1.val);
+                curr.next = node;
+                if (c1.next == null) {
+                    c1 = null;
+                    break;
+                }
                 c1 = c1.next;
+
             } else {
-                node.val = c2.val;
+                System.out.println("c2 is less");
+                ListNode node = new ListNode(c2.val);
+                curr.next = node;
+                if (c2.next == null) {
+                    c2 = null;
+                    break;
+                }
                 c2 = c2.next;
+
             }
-            curr.next = node;
+
             curr = curr.next;
         }
         while (c1 != null && c1.next != null) {
-            ListNode node = new ListNode();
-            node.val = c1.val;
-            c1 = c1.next;
+            ListNode node = new ListNode(c1.val);
             curr.next = node;
             curr = curr.next;
+            if (c1.next == null) {
+                c1 = null;
+                break;
+            }
+            c1 = c1.next;
+
         }
         while (c2 != null && c2.next != null) {
-            ListNode node = new ListNode();
-            node.val = c2.val;
-            c2 = c2.next;
+            ListNode node = new ListNode(c2.val);
             curr.next = node;
             curr = curr.next;
+            if (c2.next == null) {
+                c2 = null;
+                break;
+            }
+            c2 = c2.next;
+
         }
+        System.out.println("After merge");
+
+        printList(newHead.next);
+
         return newHead.next;
+    }
+
+    public void printList(ListNode newHead) {
+        ListNode curr = newHead;
+        while (curr != null) {
+            System.out.print(curr.val + " ");
+            curr = curr.next;
+        }
     }
 }
