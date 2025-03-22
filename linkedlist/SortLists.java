@@ -1,5 +1,34 @@
 package linkedlist;
 
+/**
+ * Approach to Sort a LinkedList using Merge Sort:
+ * 
+ * 1. Base Case:
+ *    - If list is empty or has single node, return as is
+ *    
+ * 2. Find Middle Node:
+ *    - Use slow and fast pointer technique
+ *    - Slow moves one step, fast moves two steps
+ *    - When fast reaches end, slow is at middle
+ *    
+ * 3. Split List:
+ *    - Break list into two halves at middle point
+ *    - First half: head to middle
+ *    - Second half: middle+1 to end
+ *    
+ * 4. Recursive Sort:
+ *    - Recursively sort both halves
+ *    - Each recursion follows steps 1-3
+ *    
+ * 5. Merge:
+ *    - Merge two sorted halves
+ *    - Compare nodes and link in ascending order
+ *    - Return merged sorted list
+ * 
+ * Time Complexity: O(n log n)
+ * Space Complexity: O(log n) for recursion stack
+ * https://leetcode.com/problems/sort-list/
+ */
 public class SortLists {
 
     public ListNode sortList(ListNode head) {
@@ -19,10 +48,6 @@ public class SortLists {
         // head to temp -> left list, slow to fast -> right list
         ListNode left_side = sortList(head);
         ListNode right_side = sortList(slow);
-        System.out.println("left side");
-        printList(left_side);
-        System.out.println("right side");
-        printList(right_side);
         return merge(left_side, right_side);
     }
 
@@ -33,9 +58,9 @@ public class SortLists {
         while (c1 != null && c2 != null) {
 
             if (c1.val < c2.val) {
-                System.out.println("c1 is less");
                 ListNode node = new ListNode(c1.val);
                 curr.next = node;
+                curr = curr.next;
                 if (c1.next == null) {
                     c1 = null;
                     break;
@@ -43,20 +68,17 @@ public class SortLists {
                 c1 = c1.next;
 
             } else {
-                System.out.println("c2 is less");
                 ListNode node = new ListNode(c2.val);
                 curr.next = node;
+                curr = curr.next;
                 if (c2.next == null) {
                     c2 = null;
                     break;
                 }
                 c2 = c2.next;
-
             }
-
-            curr = curr.next;
         }
-        while (c1 != null && c1.next != null) {
+        while (c1 != null) {
             ListNode node = new ListNode(c1.val);
             curr.next = node;
             curr = curr.next;
@@ -65,9 +87,8 @@ public class SortLists {
                 break;
             }
             c1 = c1.next;
-
         }
-        while (c2 != null && c2.next != null) {
+        while (c2 != null) {
             ListNode node = new ListNode(c2.val);
             curr.next = node;
             curr = curr.next;
@@ -76,11 +97,7 @@ public class SortLists {
                 break;
             }
             c2 = c2.next;
-
         }
-        System.out.println("After merge");
-
-        printList(newHead.next);
 
         return newHead.next;
     }
