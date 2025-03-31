@@ -1,5 +1,6 @@
 package stacknqueue;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -7,11 +8,37 @@ import java.util.Stack;
 public class NextGreaterElement {
     public static void main(String[] args) {
         int[] nums1 = { 4, 1, 3 };
-        int[] nums2 = { 1, 3, 4, 2 };
-        int[] ans = nextGreaterElement(nums1, nums2);
-        for (int i : ans) {
-            System.out.println(i);
+        int[] nums2 = { 11, 5, 9, 2, 8, 3, 16 };
+        int[] ans = nextGreaterElement3(nums1, nums2);
+        // for (int i : ans) {
+        // System.out.println(i);
+        // }
+    }
+
+    public static int[] nextGreaterElement3(int[] nums1, int[] nums2) {
+        // this is the optimized approach
+        // using monotonic decreasing stack
+        // start traversing array from last
+        // every time we find a bigger element than stack top, pop from stack
+        // then if stack is not empty , update result map
+        // then add current index in stack
+        Stack<Integer> st = new Stack<>();
+        int[] ans = new int[nums1.length];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = nums2.length - 1; i >= 0; i--) {
+            while (!st.isEmpty() && nums2[st.peek()] <= nums2[i]) {
+                st.pop();
+            }
+            if (!st.isEmpty()) {
+                map.put(nums2[i], nums2[st.peek()]);
+            }
+            st.push(i);
         }
+        Arrays.stream(ans).forEach(num -> System.out.println(num));
+        for (int i = 0; i < nums1.length; i++) {
+            ans[i] = map.getOrDefault(nums1[i], -1);
+        }
+        return ans;
     }
 
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
@@ -54,10 +81,12 @@ public class NextGreaterElement {
      * Finds the next greater element for each element in nums1 within nums2.
      * 
      * Approach:
-     * 1. Uses a monotonic stack and hashmap to efficiently find next greater elements
+     * 1. Uses a monotonic stack and hashmap to efficiently find next greater
+     * elements
      * 2. Iterate through nums2:
-     *    - While current number is greater than top of stack, pop and map the next greater
-     *    - Push current number to stack
+     * - While current number is greater than top of stack, pop and map the next
+     * greater
+     * - Push current number to stack
      * 3. Any remaining numbers in stack have no greater element (-1)
      * 4. Use map to build result array for nums1
      * 
@@ -68,24 +97,25 @@ public class NextGreaterElement {
      * @param nums2 Array containing all numbers
      * @return Array containing next greater element for each number in nums1
      */
-     public int[] nextGreaterElement2(int[] nums1, int[] nums2) {
+    public int[] nextGreaterElement2(int[] nums1, int[] nums2) {
 
         int[] ans = new int[nums1.length];
         Stack<Integer> s1 = new Stack<>();
-        Map<Integer, Integer>map = new HashMap<>();
-        for(int i=0;i<nums2.length;i++){
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums2.length; i++) {
             int num = nums2[i];
-            while(!s1.isEmpty() && num>s1.peek()){
+            while (!s1.isEmpty() && num > s1.peek()) {
                 map.put(s1.pop(), num);
             }
             s1.push(num);
         }
-        while(!s1.isEmpty()){
-            map.put(s1.pop(),-1);
+        while (!s1.isEmpty()) {
+            map.put(s1.pop(), -1);
         }
-        for(int i=0;i<nums1.length;i++){
-            ans[i] = map.getOrDefault(nums1[i],-1);
+        for (int i = 0; i < nums1.length; i++) {
+            ans[i] = map.getOrDefault(nums1[i], -1);
         }
         return ans;
     }
+
 }
